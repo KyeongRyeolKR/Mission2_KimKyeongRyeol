@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -27,6 +30,8 @@ public class LikeablePerson extends BaseEntity {
     private String toInstaMemberUsername; // 혹시 몰라서 기록
 
     private int attractiveTypeCode; // 매력포인트(1=외모, 2=성격, 3=능력)
+
+    private boolean coolTimeState; // 쿨타임 상태
 
     public RsData updateAttractionTypeCode(int attractiveTypeCode) {
         if (this.attractiveTypeCode == attractiveTypeCode) {
@@ -52,5 +57,14 @@ public class LikeablePerson extends BaseEntity {
             case 2 -> "<i class=\"fa-regular fa-face-smile\"></i>";
             default -> "<i class=\"fa-solid fa-people-roof\"></i>";
         } + "&nbsp;" + getAttractiveTypeDisplayName();
+    }
+
+    public void updateCoolTime() {
+        this.coolTimeState = getRemainMinutes() > 0;
+    }
+
+    public long getRemainMinutes() {
+        LocalDateTime now = LocalDateTime.now();
+        return 180 - ChronoUnit.MINUTES.between(getModifyDate(), now);
     }
 }
