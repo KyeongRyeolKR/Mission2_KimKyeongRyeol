@@ -1,0 +1,191 @@
+<html layout:decorate="~{usr/layout/layout.html}">
+
+<head>
+    <title>호감 정보</title>
+</head>
+
+<body>
+
+<main layout:fragment="main" class="flex-grow flex items-center justify-center">
+    <div th:if="${member == null}" th:include="usr/part/notFoundMember::base"></div>
+
+    <div th:if="${member != null}" class="max-w-2xl w-full px-4">
+        <h1 class="mb-4">
+            <i class="fa-solid fa-user"></i>
+            <span th:text="|${member.getUsername()}님의 호감 정보|"></span>
+        </h1>
+        <div class="flex flex-col gap-4">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fa-solid fa-circle-info"></i> 호감사유별 인기
+                    </h2>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">전체</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-heart"></i>&nbsp;<span
+                                th:text="|${member.likes}명|"></span>
+                        </div>
+                    </div>
+
+                    <hr class="mt-2">
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">외모</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-person-rays"></i>&nbsp;<span
+                                th:text="|${member.likesCountByAttractionTypeCode1}명|"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">성격</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-regular fa-face-smile"></i>&nbsp;<span
+                                th:text="|${member.likesCountByAttractionTypeCode2}명|"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">능력</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-people-roof"></i>&nbsp;<span
+                                th:text="|${member.likesCountByAttractionTypeCode3}명|"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fa-solid fa-person-half-dress"></i> 성별 인기
+                    </h2>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">전체</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-heart"></i>&nbsp;<span
+                                th:text="|${member.likes}명|"></span>
+                        </div>
+                    </div>
+
+                    <hr class="mt-2">
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">여성</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-person-dress"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderWoman}명|"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">남성</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-person"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderMan}명|"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fa-solid fa-person-dress"></i> 여성들로부터 받은 호감
+                    </h2>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">외모</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-person-rays"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderWomanAndAttractiveTypeCode1}명|"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">성격</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-regular fa-face-smile"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderWomanAndAttractiveTypeCode2}명|"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">능력</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-people-roof"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderWomanAndAttractiveTypeCode3}명|"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <i class="fa-solid fa-person"></i> 남성들로부터 받은 호감
+                    </h2>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">외모</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-person-rays"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderManAndAttractiveTypeCode1}명|"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">성격</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-regular fa-face-smile"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderManAndAttractiveTypeCode2}명|"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div>
+                            <span class="badge badge-primary">능력</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa-solid fa-people-roof"></i>&nbsp;<span
+                                th:text="|${member.likesCountByGenderManAndAttractiveTypeCode3}명|"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+</body>
+
+</html>
